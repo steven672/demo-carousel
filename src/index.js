@@ -231,7 +231,7 @@ function handelEnded() {
     Welcome(),
     document.getElementById('root')
     );
-    // window.location.reload(true); /
+    // window.location.reload(true);
     console.log(currentImage);
   }
 
