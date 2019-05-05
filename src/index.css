@@ -73,3 +73,13 @@ video {
   height: auto   !important;
   padding: 50px;
 }
+
+.div-with-bg1
+{
+    background:  url('download.jpg') ;
+}
+
+.div-with-bg2
+{
+    background:  url('download_2.jpg') ;
+}

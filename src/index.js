@@ -161,10 +161,6 @@
 //   }
 // }
 
-// ReactDOM.render(
-//   <Welcome />,
-//   document.getElementById('root')
-// );
 
 import React from "react";
 import { render } from "react-dom";
@@ -179,5 +175,69 @@ const App = () => (
 );
 
 
-render(<App />, document.getElementById("root"));
+var currentImage = 0;
+function Welcome(props) {
+  var data =
+    [
+      {
+          "user":{"name":"zhaoyu"},
+          "record":[{
+            "video":"test.mp4",
+            "text":"Lake",
+            "pic":"div-with-bg1"
+          }],
+          "others":[]
+          },
+          {
+          "user":{"name":"yuzhao"},
+          "record":[{
+            "video":"test2.mp4",
+            "text":"Sun",
+            "pic":"div-with-bg2"
+          }],
+          "others":[]
+      }
+    ];
+  const style = data[currentImage].record[0].pic;
+  const name = "Hello, " + data[currentImage].user.name;
+  const video = data[currentImage].record[0].video;
+  const text = data[currentImage].record[0].text;
 
+  console.log(currentImage + " hrere");
+  return (
+    <div>
+        <p id='t0'>{name}</p>
+        <div class="background" class={style} id ="t3">
+          <video width="400" controls autoPlay id="tvideo" onEnded = {handelEnded} src={video} class="video">
+              Your browser does not support HTML5 video.
+          </video>
+          <div class="transbox">
+            <p id="t2">{text}</p>
+          </div>
+        </div>
+    </div>
+    );
+
+}
+
+function handelEnded() {
+    console.log(currentImage);
+    if (currentImage < 1){
+        currentImage ++;
+    } else {
+        currentImage = 0;
+    }
+    render(
+    Welcome(),
+    document.getElementById('root')
+    );
+    // window.location.reload(true); /
+    console.log(currentImage);
+  }
+
+const element = Welcome();
+
+render(
+    element,
+    document.getElementById('root')
+    );
